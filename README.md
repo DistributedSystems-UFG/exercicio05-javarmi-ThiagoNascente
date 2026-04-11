@@ -33,7 +33,7 @@ Executar código a código das instruções no aws (as vezes vai precisar de sud
 
   sudo apt install default-jdk
 
-## Entrando no diretório e clonando git
+## Entrando no diretório e clonando repositório
 
 ``` bash
 cd /mnt/efs/fs1
@@ -56,17 +56,35 @@ cd exercicio05-javarmi-ThiagoNascente/
 
   ```bash
   java example.hello.Server
+  ```
+  > Abre primeiro processo servidor na máquina 1, pelo bash 1
+
+  ```bash
   java example.hello.NewServer
   ```
-  > Abre servidores na máquina 1
+  > Abre segundo processo servidor na máquina 1, pelo bash 2
 
   ```bash
   java example.hello.Client <IP_Address_of_Server>
   ```
-  > Executa cliente no IP das máquinas hospedeiras.
+  > Executa cliente no IP da máquina hospedeira (máquina 2), pelo bash 3.
   
 ## Obs.:
 
-Os comentários guardam resquícios do código adaptado para funcionar localmente.
+- Os comentários guardam resquícios do código adaptado para funcionar localmente.
+
+- Testei em três terminais, dois da máquina 1 e um da máquina 2.
+
+- Na máquina 1, rodou os processos servidores, e na máquina 2 o cliente.
+
+- Precisei executar os seguintes códigos para fazer git pull
+
+```bash
+git config --global --add safe.directory /mnt/efs/fs1/exercicio05-javarmi-ThiagoNascente
+```
+
+```bash
+sudo chown -R ubuntu:ubuntu /mnt/efs/fs1/exercicio05-javarmi-ThiagoNascente
+```
 
 
