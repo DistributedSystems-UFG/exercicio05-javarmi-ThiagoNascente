@@ -1,29 +1,72 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/H9OWARAO)
-# POO-JavaRMI-Hello
-Simple example used to teach distributed objects in the OOP course
+# Minha Resposta
 
-Based on Oracle's Java RMI Guide: https://docs.oracle.com/javase/8/docs/technotes/guides/rmi/hello/hello-world.html
+**Aluno**: Thiago Nascente Borges
 
-It is composed by three files:
+## Confirando o firewall no aws (grupo de segurança)
 
-- Hello.java: description of the remote object's interface
-- Server.java: implementation of the remote object + code to start a server process where the object will run
-- Client.java: a simple client to demonstrate the invocation of method's on the remote object.
+  Open the following ports for TCP: 1099, 5678-5679
 
-### First, if necessary, install the JDK on the machines:
+## Abrindo as máquinas
+
+Dentro da pasta que tenha o arquivo .pem da chave de acesso, abra o terminal.
+
+### windows
+
+```bash
+icacls "[nome_da_chave].pem" /inheritance:r
+```
+> Reseta as permissões e remove a herança de pastas superiores
+
+```bash
+icacls "[nome_da_chave].pem" /grant:r "${env:UserName}:R"
+```
+> Concede permissão de leitura apenas para o seu usuário atual
+
+Depois executar código de conexão do ssh, ainda no bash.
+
+### Linux
+
+Executar código a código das instruções no aws (as vezes vai precisar de sudo).
+
+## Instalando o java:
 
   sudo apt install default-jdk
 
-### Then, configure the firewall (security group -- if running it on AWS)
+## Entrando no diretório e clonando git
 
-  Open the following ports for TCP: 1099, 1900
+``` bash
+cd /mnt/efs/fs1
+```
 
-### Then, run the server on one machine and the client on another
+``` bash
+git clone <link_HTTPS>
+```
 
+``` bash
+cd exercicio05-javarmi-ThiagoNascente/
+```
+
+## Pode-se então compilar e depois executar
+
+  ```bash
+  javac example/hello/*.java
+  ```
+  > Compila tudo
+
+  ```bash
   java example.hello.Server
+  java example.hello.NewServer
+  ```
+  > Abre servidores na máquina 1
 
+  ```bash
   java example.hello.Client <IP_Address_of_Server>
+  ```
+  > Executa cliente no IP das máquinas hospedeiras.
   
-### Now, extend the example:
+## Obs.:
 
-Try adding other methods to the remote object and calling them from the client.
+Os comentários guardam resquícios do código adaptado para funcionar localmente.
+
+

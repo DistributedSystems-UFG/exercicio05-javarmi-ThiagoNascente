@@ -10,10 +10,14 @@ public class HelloImplem extends UnicastRemoteObject implements Hello {
     }
 
     public String sayHello() throws RemoteException {
-        return "Hello, world!";
+        return "Hello 1, this is a common hello world!";
     }
 
-    public int soma (int a, int b) throws RemoteException {
-        return a + b;
+    public String soma (int a, int b) throws RemoteException {
+        return "Response from " + a + " + " + b + " = " + (a + b);
+    }
+
+    public String diferenca(int a, int b) throws RemoteException{
+        return "Response from " + a + " - " + b + " = " + (a - b);
     }
 }

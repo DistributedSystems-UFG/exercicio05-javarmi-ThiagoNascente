@@ -1,14 +1,13 @@
 package example.hello;
 
 import java.rmi.Naming;
-import java.rmi.registry.Registry;
-import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
-public class Server {
+public class NewServer {
 
-    public Server() {}
+    public NewServer() {}
 
     public static void main(String args[]) {
         try {
@@ -17,12 +16,11 @@ public class Server {
             } catch (RemoteException e) {
                 System.out.println("Registry já está rodando.");
             }
+            OtherHelloImplem obj = new OtherHelloImplem(5679);
 
-            HelloImplem obj = new HelloImplem(5678);
+            Naming.rebind("OtherHello", obj);
 
-            Naming.rebind("MyHello", obj);
-
-            System.err.println("Server ready");
+            System.err.println("New server ready!!!");
         } catch (Exception e) {
             System.err.println("Server exception: " + e.toString());
             e.printStackTrace();
