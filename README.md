@@ -3,9 +3,13 @@
 
 **Aluno**: Thiago Nascente Borges
 
-## Confirando o firewall no aws (grupo de segurança)
+## Confirando o firewall no aws (grupo de segurança) & Ponto de montagem
 
-  Open the following ports for TCP: 1099, 5678-5679
+- Abra as seguintes portas TCP (origem Anywhere): 1099, 5678-5679
+
+- Defina armazenamento compartilhado como ESF, com ponto de montagem definido como `/mnt/efs/fs1`
+
+
 
 ## Abrindo as máquinas
 
